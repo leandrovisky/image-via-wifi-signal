@@ -1,0 +1,22 @@
+import cv2
+
+# Endereço IP da câmera
+camera_ip = "192.168.1.100"
+
+# Conexão com a câmera
+cap = cv2.VideoCapture(f"http://{camera_ip}/video")
+
+while True:
+    # Captura o frame da câmera
+    ret, frame = cap.read()
+
+    # Exibe o frame
+    cv2.imshow('Camera', frame)
+
+    # Aguarda a tecla 'q' para sair do loop
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+# Libera a câmera e fecha a janela
+cap.release()
+cv2.destroyAllWindows()
